@@ -22,6 +22,7 @@ RUN gem install 'watir-rspec' --no-ri --no-rdoc
 RUN gem install 'webdriver-highlighter' --no-ri --no-rdoc
 RUN gem install 'colorize' --no-ri --no-rdoc
 RUN gem install 'faraday' --no-ri --no-rdoc
+RUN gem install 'rubocop' --no-ri --no-rdoc
 
 ENV HEADLESS true
 
