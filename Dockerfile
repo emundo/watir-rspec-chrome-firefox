@@ -1,5 +1,9 @@
 FROM ubuntu:16.04
 
+# make latest chromium version available: 
+# => https://launchpad.net/~canonical-chromium-builds/+archive/ubuntu/stage 
+RUN add-apt-repository ppa:canonical-chromium-builds/stage
+
 RUN apt-get update -qqy && apt-get install -y curl xvfb chromium-browser firefox
 
 RUN ln -s /usr/bin/chromium-browser /usr/bin/google-chrome
