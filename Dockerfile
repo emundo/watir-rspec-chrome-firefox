@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:rolling
 
 # make latest chromium version available: 
 # => https://launchpad.net/~canonical-chromium-builds/+archive/ubuntu/stage 
