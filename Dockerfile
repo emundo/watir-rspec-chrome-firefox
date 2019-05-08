@@ -1,35 +1,45 @@
 FROM ubuntu:rolling
 
-# make latest chromium version available: 
+ENV HEADLESS true
+
+# Verwende die letzte Chromium-Version.
 # => https://launchpad.net/~canonical-chromium-builds/+archive/ubuntu/stage 
-RUN add-apt-repository ppa:canonical-chromium-builds/stage
-
-RUN apt-get update -qqy && apt-get install -y curl xvfb chromium-browser firefox
-
-RUN ln -s /usr/bin/chromium-browser /usr/bin/google-chrome
-
-RUN apt-get update -qqy \
-  && apt-get -qqy install libnss3 libnss3-tools libfontconfig1 wget ca-certificates apt-transport-https inotify-tools \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-
-
-RUN apt-get update -qqy && apt-get -y install ruby-full zlib1g-dev libffi-dev gcc make git
-
-RUN apt-get autoclean
+RUN add-apt-repository ppa:canonical-chromium-builds/stage && \
+    apt-get update -qy && \
+    apt-get install -qy \
+        apt-transport-https \
+        ca-certificates \
+        chromium-browser \
+        curl \
+        firefox \
+        gcc \
+        git \
+        inotify-tools \
+        libffi-dev \
+        libfontconfig1 \
+        libnss3 \
+        libnss3-tools \
+        make \
+        ruby-full \
+        wget \
+        xvfb \
+        zlib1g-dev && \
+    apt-get autoclean && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 RUN gem install --no-ri --no-rdoc \
-        'watir' \
-        'headless' \
-        'webdrivers' \
-        'watir-scroll' \
-        'rspec' \
-        'watir-rspec' \
-        'webdriver-highlighter' \
         'colorize' \
         'faraday' \
-        'rubocop'
+        'headless' \
+        'rspec' \
+        'rubocop' \
+        'watir' \
+        'watir-rspec' \
+        'watir-scroll' \
+        'webdriver-highlighter' \
+        'webdrivers'
 
-ENV HEADLESS true
+RUN ln -s /usr/bin/chromium-browser /usr/bin/google-chrome
 
 ## emundo User
 RUN addgroup --gid 1101 rancher && \
