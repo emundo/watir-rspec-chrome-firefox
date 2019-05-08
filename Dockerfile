@@ -17,16 +17,17 @@ RUN apt-get update -qqy && apt-get -y install ruby-full zlib1g-dev libffi-dev gc
 
 RUN apt-get autoclean
 
-RUN gem install 'watir' --no-ri --no-rdoc
-RUN gem install 'headless' --no-ri --no-rdoc
-RUN gem install 'webdrivers' --no-ri --no-rdoc
-RUN gem install 'watir-scroll' --no-ri --no-rdoc
-RUN gem install 'rspec' --no-ri --no-rdoc
-RUN gem install 'watir-rspec' --no-ri --no-rdoc
-RUN gem install 'webdriver-highlighter' --no-ri --no-rdoc
-RUN gem install 'colorize' --no-ri --no-rdoc
-RUN gem install 'faraday' --no-ri --no-rdoc
-RUN gem install 'rubocop' --no-ri --no-rdoc
+RUN gem install --no-ri --no-rdoc \
+        'watir' \
+        'headless' \
+        'webdrivers' \
+        'watir-scroll' \
+        'rspec' \
+        'watir-rspec' \
+        'webdriver-highlighter' \
+        'colorize' \
+        'faraday' \
+        'rubocop'
 
 ENV HEADLESS true
 
