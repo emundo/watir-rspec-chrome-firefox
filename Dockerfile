@@ -32,6 +32,7 @@ RUN gem install --no-ri --no-rdoc \
         'colorize' \
         'faraday' \
         'headless' \
+        'rake' \
         'rspec' \
         'rubocop' \
         'watir' \
