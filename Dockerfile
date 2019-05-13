@@ -26,7 +26,8 @@ RUN apt-get update -qy && \
         xvfb \
         zlib1g-dev && \
     apt-get autoclean && \
-    rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/* && \
+    ln -s /usr/bin/chromium-browser /usr/bin/google-chrome
 
 RUN gem install --no-ri --no-rdoc \
         'colorize' \
@@ -40,8 +41,6 @@ RUN gem install --no-ri --no-rdoc \
         'watir-scroll' \
         'webdriver-highlighter' \
         'webdrivers'
-
-RUN ln -s /usr/bin/chromium-browser /usr/bin/google-chrome
 
 ## emundo User
 RUN addgroup --gid 1101 rancher && \
