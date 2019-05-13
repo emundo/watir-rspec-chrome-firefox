@@ -4,8 +4,9 @@ ENV HEADLESS true
 
 # Verwende die letzte Chromium-Version.
 # => https://launchpad.net/~canonical-chromium-builds/+archive/ubuntu/stage 
-RUN add-apt-repository ppa:canonical-chromium-builds/stage && \
-    apt-get update -qy && \
+RUN apt-get update -qy && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository ppa:canonical-chromium-builds/stage && \
     apt-get install -qy \
         apt-transport-https \
         ca-certificates \
